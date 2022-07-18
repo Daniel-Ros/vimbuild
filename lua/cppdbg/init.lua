@@ -29,7 +29,7 @@ M.build = function()
 	if o == nil or o.build == nil then
 		return
 	end
-	vim.cmd("TermExec 2 cmd=" .. o.build .. ' dir="' .. vim.fn.getcwd() .. '" direction="horizontal"')
+	vim.cmd("TermExec 2 cmd=" .. table.concat(o.build, " ") .. ' dir="' .. vim.fn.getcwd() .. '" direction="horizontal"')
 end
 
 M.debug = function()
