@@ -1,5 +1,4 @@
 local cxt = require("plenary.context_manager")
-local job = require("plenary.job")
 local M = {}
 
 local read_file = function(file)
@@ -29,14 +28,19 @@ M.build = function()
 	if o == nil or o.build == nil then
 		return
 	end
-    print(table.concat(o.build, " "))
-  local cmd = "TermExec 2 cmd=" .. table.concat(o.build, " ") .. '" dir="' .. vim.fn.getcwd() .. '" direction="horizontal"'
+	print(table.concat(o.build, " "))
+	local cmd = 'TermExec 2 cmd="'
+		.. table.concat(o.build, " ")
+		.. '" dir="'
+		.. vim.fn.getcwd()
+		.. '" direction="horizontal"'
+    print(cmd)
 	vim.cmd(cmd)
 end
 
 M.debug = function()
 	local o = open_file("config.json")
-    if o == nil or o.file == nil then
+	if o == nil or o.file == nil then
 		return
 	end
 	local conf = {
@@ -46,10 +50,10 @@ M.debug = function()
 		program = o.file,
 		cwd = "${workspaceFolder}",
 		stopOnEntry = true,
-        arg = o.args
+		args = o.args,
 	}
 
-    require("dap").run(conf)
+	require("dap").run(conf)
 end
 
 return M
