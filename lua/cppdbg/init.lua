@@ -30,7 +30,8 @@ M.build = function()
 		return
 	end
     print(table.concat(o.build, " "))
-	vim.cmd("TermExec 2 cmd=" .. table.concat(o.build, " ") .. '" dir="' .. vim.fn.getcwd() .. '" direction="horizontal"')
+  local cmd = "TermExec 2 cmd=" .. table.concat(o.build, " ") .. '" dir="' .. vim.fn.getcwd() .. '" direction="horizontal"'
+	vim.cmd(cmd)
 end
 
 M.debug = function()
