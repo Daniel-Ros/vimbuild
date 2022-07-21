@@ -28,13 +28,11 @@ M.build = function()
 	if o == nil or o.build == nil then
 		return
 	end
-	print(table.concat(o.build, " "))
 	local cmd = 'TermExec 2 cmd="'
 		.. table.concat(o.build, " ")
 		.. '" dir="'
 		.. vim.fn.getcwd()
 		.. '" direction="horizontal"'
-    print(cmd)
 	vim.cmd(cmd)
 end
 
