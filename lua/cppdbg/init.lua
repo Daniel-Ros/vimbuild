@@ -34,6 +34,8 @@ M.build = function()
 		.. vim.fn.getcwd()
 		.. '" direction="horizontal"'
 	vim.cmd(cmd)
+    require "toggleterm".toggle_nth_term(1)
+    require "toggleterm".toggle_nth_term(1)
 end
 
 M.debug = function()
